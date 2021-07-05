@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "websites",
+  "info": {
+    "name": "Website"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteDescription": {
+      "type": "string",
+      "maxLength": 300
+    }
+  }
+}
