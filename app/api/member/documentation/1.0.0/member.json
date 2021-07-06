@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/pages": {
+    "/members": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Page"
+                    "$ref": "#/components/schemas/Member"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Page"
+          "Member"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page"
+                  "$ref": "#/components/schemas/Member"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Page"
+          "Member"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPage"
+                "$ref": "#/components/schemas/NewMember"
               }
             }
           }
         }
       }
     },
-    "/pages/count": {
+    "/members/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Page"
+          "Member"
         ],
         "parameters": []
       }
     },
-    "/pages/{id}": {
+    "/members/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page"
+                  "$ref": "#/components/schemas/Member"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Page"
+          "Member"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page"
+                  "$ref": "#/components/schemas/Member"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Page"
+          "Member"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPage"
+                "$ref": "#/components/schemas/NewMember"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Page"
+          "Member"
         ],
         "parameters": [
           {
@@ -514,445 +514,223 @@
   },
   "components": {
     "schemas": {
-      "Page": {
+      "Member": {
         "required": [
           "id",
-          "title"
+          "membershipType",
+          "fullName"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
-            "type": "string",
-            "maxLength": 140
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "content.banner",
-                        "content.content"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "Image": {
-                      "required": [
-                        "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
-                          "type": "string"
-                        },
-                        "created_by": {
-                          "type": "string"
-                        },
-                        "updated_by": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "Text": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "Image"
-                  ]
-                },
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "content.banner",
-                        "content.content"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "Paragraph": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
-                }
-              ]
-            }
-          },
-          "slug": {
-            "type": "string"
-          },
-          "metadata": {
-            "type": "object",
+          "headshot": {
             "required": [
-              "id"
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "metaTitle": {
-                "type": "string",
-                "maxLength": 60
+              "name": {
+                "type": "string"
               },
-              "metaDescription": {
-                "type": "string",
-                "maxLength": 100
+              "alternativeText": {
+                "type": "string"
               },
-              "shareImage": {
-                "required": [
-                  "id",
-                  "name",
-                  "hash",
-                  "mime",
-                  "size",
-                  "url",
-                  "provider"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "alternativeText": {
-                    "type": "string"
-                  },
-                  "caption": {
-                    "type": "string"
-                  },
-                  "width": {
-                    "type": "integer"
-                  },
-                  "height": {
-                    "type": "integer"
-                  },
-                  "formats": {
-                    "type": "object"
-                  },
-                  "hash": {
-                    "type": "string"
-                  },
-                  "ext": {
-                    "type": "string"
-                  },
-                  "mime": {
-                    "type": "string"
-                  },
-                  "size": {
-                    "type": "number"
-                  },
-                  "url": {
-                    "type": "string"
-                  },
-                  "previewUrl": {
-                    "type": "string"
-                  },
-                  "provider": {
-                    "type": "string"
-                  },
-                  "provider_metadata": {
-                    "type": "object"
-                  },
-                  "related": {
-                    "type": "string"
-                  },
-                  "created_by": {
-                    "type": "string"
-                  },
-                  "updated_by": {
-                    "type": "string"
-                  }
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "presentation": {
+            "type": "string"
+          },
+          "membershipType": {
+            "type": "string",
+            "default": "member",
+            "enum": [
+              "member",
+              "individualPartner",
+              "corporatePartner"
+            ]
+          },
+          "fullName": {
+            "type": "string",
+            "minLength": 5
+          },
+          "contact": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "value",
+                "visibility"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "phone",
+                    "whatsapp",
+                    "websiteUrl",
+                    "twitterHandle",
+                    "instagramHandle",
+                    "linkedinProfileUrl",
+                    "facebookPageUrl"
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                },
+                "visibility": {
+                  "type": "string",
+                  "default": "members",
+                  "enum": [
+                    "public",
+                    "members",
+                    "staff",
+                    "admins"
+                  ]
                 }
               }
             }
           },
-          "published_at": {
+          "activatedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date"
           }
         }
       },
-      "NewPage": {
+      "NewMember": {
         "required": [
-          "title"
+          "membershipType",
+          "fullName"
         ],
         "properties": {
-          "title": {
-            "type": "string",
-            "maxLength": 140
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "content.banner",
-                        "content.content"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "Image": {
-                      "required": [
-                        "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
-                          "type": "string"
-                        },
-                        "created_by": {
-                          "type": "string"
-                        },
-                        "updated_by": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "Text": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "Image"
-                  ]
-                },
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "content.banner",
-                        "content.content"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "Paragraph": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
-                }
-              ]
-            }
-          },
-          "slug": {
+          "login": {
             "type": "string"
           },
-          "metadata": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "metaTitle": {
-                "type": "string",
-                "maxLength": 60
-              },
-              "metaDescription": {
-                "type": "string",
-                "maxLength": 100
-              },
-              "shareImage": {
-                "required": [
-                  "id",
-                  "name",
-                  "hash",
-                  "mime",
-                  "size",
-                  "url",
-                  "provider"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "alternativeText": {
-                    "type": "string"
-                  },
-                  "caption": {
-                    "type": "string"
-                  },
-                  "width": {
-                    "type": "integer"
-                  },
-                  "height": {
-                    "type": "integer"
-                  },
-                  "formats": {
-                    "type": "object"
-                  },
-                  "hash": {
-                    "type": "string"
-                  },
-                  "ext": {
-                    "type": "string"
-                  },
-                  "mime": {
-                    "type": "string"
-                  },
-                  "size": {
-                    "type": "number"
-                  },
-                  "url": {
-                    "type": "string"
-                  },
-                  "previewUrl": {
-                    "type": "string"
-                  },
-                  "provider": {
-                    "type": "string"
-                  },
-                  "provider_metadata": {
-                    "type": "object"
-                  },
-                  "related": {
-                    "type": "string"
-                  },
-                  "created_by": {
-                    "type": "string"
-                  },
-                  "updated_by": {
-                    "type": "string"
-                  }
+          "presentation": {
+            "type": "string"
+          },
+          "membershipType": {
+            "type": "string",
+            "default": "member",
+            "enum": [
+              "member",
+              "individualPartner",
+              "corporatePartner"
+            ]
+          },
+          "fullName": {
+            "type": "string",
+            "minLength": 5
+          },
+          "contact": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "value",
+                "visibility"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "phone",
+                    "whatsapp",
+                    "websiteUrl",
+                    "twitterHandle",
+                    "instagramHandle",
+                    "linkedinProfileUrl",
+                    "facebookPageUrl"
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                },
+                "visibility": {
+                  "type": "string",
+                  "default": "members",
+                  "enum": [
+                    "public",
+                    "members",
+                    "staff",
+                    "admins"
+                  ]
                 }
               }
             }
           },
-          "published_at": {
+          "activatedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date"
           },
           "created_by": {
             "type": "string"
@@ -966,7 +744,7 @@
   },
   "tags": [
     {
-      "name": "Page"
+      "name": "Member"
     }
   ]
 }

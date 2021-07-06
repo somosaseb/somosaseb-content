@@ -318,9 +318,120 @@
           "id": {
             "type": "string"
           },
+          "siteTitle": {
+            "type": "string"
+          },
           "siteDescription": {
             "type": "string",
             "maxLength": 300
+          },
+          "favicon": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "contactLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "value",
+                "visibility"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "phone",
+                    "whatsapp",
+                    "websiteUrl",
+                    "twitterHandle",
+                    "instagramHandle",
+                    "linkedinProfileUrl",
+                    "facebookPageUrl"
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                },
+                "visibility": {
+                  "type": "string",
+                  "default": "members",
+                  "enum": [
+                    "public",
+                    "members",
+                    "staff",
+                    "admins"
+                  ]
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -330,9 +441,53 @@
       },
       "NewWebsite": {
         "properties": {
+          "siteTitle": {
+            "type": "string"
+          },
           "siteDescription": {
             "type": "string",
             "maxLength": 300
+          },
+          "contactLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "value",
+                "visibility"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "phone",
+                    "whatsapp",
+                    "websiteUrl",
+                    "twitterHandle",
+                    "instagramHandle",
+                    "linkedinProfileUrl",
+                    "facebookPageUrl"
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                },
+                "visibility": {
+                  "type": "string",
+                  "default": "members",
+                  "enum": [
+                    "public",
+                    "members",
+                    "staff",
+                    "admins"
+                  ]
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",

@@ -1,12 +1,13 @@
 {
-  "collectionName": "components_content_contents",
+  "collectionName": "components_richtext_contents",
   "info": {
-    "name": "Content",
-    "icon": "atom"
+    "name": "Rich Text",
+    "icon": "atom",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Text": {
+    "Paragraph": {
       "type": "richtext"
     }
   }

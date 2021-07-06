@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "websites",
   "info": {
-    "name": "Website"
+    "name": "Website",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,9 +12,24 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "siteTitle": {
+      "type": "string"
+    },
     "siteDescription": {
       "type": "string",
       "maxLength": 300
+    },
+    "favicon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["images"],
+      "plugin": "upload",
+      "required": false
+    },
+    "contactLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.contact"
     }
   }
 }

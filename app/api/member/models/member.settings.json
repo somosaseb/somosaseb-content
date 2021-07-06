@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "name": "Member",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "login": {
+      "unique": true,
+      "private": true,
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "member"
+    },
+    "headshot": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "presentation": {
+      "type": "text"
+    },
+    "membershipType": {
+      "type": "enumeration",
+      "enum": [
+        "member",
+        "individualPartner",
+        "corporatePartner"
+      ],
+      "default": "member",
+      "required": true
+    },
+    "fullName": {
+      "type": "string",
+      "required": true,
+      "minLength": 5
+    },
+    "contact": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.contact"
+    },
+    "activatedAt": {
+      "type": "date"
+    },
+    "expiresAt": {
+      "type": "date"
+    }
+  }
+}
